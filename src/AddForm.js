@@ -25,7 +25,7 @@ clickHandler=event=>{
   render(){
     return(
       <div>
-        <div>
+        <div >
           <label for="name">Name</label>
         <input onChange={this.onChangeHandler} className="form-control mb-2" type="text" id="name" placeHolder="Enter your friend name" value={this.state.name} />
         </div>
