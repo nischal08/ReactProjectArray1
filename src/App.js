@@ -1,28 +1,46 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Person from './Person.js';
+import AddForm from './AddForm';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
+	state={
+    friends :[
+		{ name: 'Sujan',address:'Chabahil', contact:9813234434 },
+		{ name: 'Suraj',address:'Kalopul', contact:9841232232 },
+		{ name: 'Kundan',address:'Gokarna', contact:9860023400},
+		{ name: 'Mack',address:'Mitrapark', contact:9813621921 }
+	]
   }
+
+  save=friend=>
+  {
+    this.setState({
+      friends:this.state.friends.concat([friend])
+    });
+  }
+
+	render() {
+		return (
+			<div className='container col-md-4  mt-5'>
+				<div className='card bg-danger '>
+					<div className='card-header bg-danger'>
+						<h3 className='text-center text-white'>{this.props.message}</h3>
+					</div>
+					<div className='card-body bg-light'>
+          <h4>
+            Input your friends information :
+          </h4>
+          <AddForm onSave={this.save}/>
+						<h4>List of your friends : </h4>
+						{this.state.friends.map((friend) => {
+							return <Person name={friend.name} add={friend.address} con={friend.contact} />;
+						})}
+					</div>
+				</div>
+			</div>
+		);
+	}
 }
 
 export default App;
