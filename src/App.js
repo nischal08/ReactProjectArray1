@@ -4,6 +4,20 @@ import Person from './Person.js';
 import AddForm from './AddForm';
 
 class App extends Component {
+	App() {
+		console.log('App.js Consturctor');
+  }
+  
+  componentDidMount(){
+		console.log('did mount');
+	}
+
+componentDidUpdate(){
+  console.log("Updated");
+}
+
+	
+
 	state = {
 		friends: [
 			{ name: 'Sujan', address: 'Chabahil', contact: 9813234434 },
@@ -20,13 +34,14 @@ class App extends Component {
 	};
 
 	render() {
+		console.log('App.js render');
 		return (
-			<div className='container col-md-4  mt-5'>
-				<div className='card bg-danger '>
-					<div className='card-header bg-danger'>
-						<h3 className='text-center text-white'>{this.props.message}</h3>
+			<div className="container col-md-4  mt-5">
+				<div className="card bg-danger ">
+					<div className="card-header bg-danger">
+						<h3 className="text-center text-white">{this.props.message}</h3>
 					</div>
-					<div className='card-body bg-light'>
+					<div className="card-body bg-light">
 						<h4>Input your friends information :</h4>
 						<AddForm onSave={this.save} />
 						<h4>List of your friends info.: </h4>
